@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Popular Movies</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+    <ion-list >
+        <ion-item *ngFor= "let movie of Popular" (click)="onGoToPage(movie.id)"> 
+          <ion-thumbnail item-start>
+              <img [src] ="'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+movie.poster_path">
+          </ion-thumbnail>
+           <h2>{{movie.title}}</h2>
+           <p>Rating: {{movie.vote_average}}</p>
+           <p>Released: {{movie.release_date}}</p>
+          
+            <p>{{movie.overview}} </p>
+          
+             <button ion-button icon-only item-end clear>
+              <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle" color="primary" clear>
+                
+              </ion-icon>
+            </button>
+          
+      </ion-item>
+      </ion-list>
+</ion-content>

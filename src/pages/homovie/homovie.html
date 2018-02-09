@@ -1,0 +1,61 @@
+
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Movie Features</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+
+  <ion-content class="card-background-page" no-padding >
+    <div>
+      <ion-slides pager >
+          <ion-slide>
+            <img src="assets/imgs/x.jpg"/>
+          </ion-slide>
+          <ion-slide>
+              <img src="assets/imgs/y.jpg"/>
+          </ion-slide>
+          <ion-slide>
+              <img src="assets/imgs/z.jpg"/>
+          </ion-slide>
+        </ion-slides>
+      </div>
+    
+  <ion-item>
+    <ion-item >
+    <ion-card item-start class="card1" (click)="onGoToPageTop()">
+      <img src="assets/imgs/1.jpg" />
+      <div class="card-title">Top Movies</div>
+    </ion-card>
+    
+  
+    <ion-card item-start class="card2" (click)="onGoToPageUpcoming()">
+      <img src="assets/imgs/2.png" />
+      <div class="card-title">Upcoming</div>
+    </ion-card>
+    </ion-item>
+  
+    <ion-item>
+    <ion-card item-start class="card1" (click)="onGoToPageNow()">
+      <img src="assets/imgs/3.jpg" />
+      <div class="card-title">Now Playing</div>
+    </ion-card>
+  
+    <ion-card item-start class="card2" (click)="onGoToPagePopular()">
+      <img src="assets/imgs/4.jpg" />
+      <div class="card-title">Popular</div>
+    </ion-card>
+  
+  </ion-item> 
+
+</ion-item>
+  </ion-content>
+
+

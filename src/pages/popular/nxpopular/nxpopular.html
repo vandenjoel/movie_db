@@ -1,0 +1,34 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>nxpopular</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+    <img src="https://image.tmdb.org/t/p/w500{{+movie?.poster_path}}"/>
+    
+        
+          
+         
+    <h2>
+      {{movie?.original_title}}
+    </h2>
+    <h3>
+      {{movie?.original_language}}
+    </h3>
+  
+  
+  <ion-card>
+      <p>{{movie?.overview}}</p>
+  </ion-card>
+
+  <span *ngFor = "let genre of movie?.genres">{{genre?.name}}</span>
+
+
+</ion-content>

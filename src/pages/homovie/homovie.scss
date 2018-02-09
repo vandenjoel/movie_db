@@ -1,0 +1,54 @@
+page-homovie {
+
+}
+.card-background-page {
+
+  
+    ion-slides {
+    
+    box-shadow: 0 4px 8px 0 rgba(2, 2, 2, 0.2), 0 2px 8px 0 rgba(5, 5, 5, 0.19);
+    text-align: center;
+    }
+
+    ion-card {
+      border: 2px;
+      border-radius: 5px;
+    }
+    
+    ion-card {
+      position: relative;
+      text-align: left;
+    }
+  
+    .card-title {
+      position: absolute;
+      top: 50%;
+      font-size: 15px ;
+      width: 100%;
+      font-weight: normal ;
+      color: #fff;
+    }
+  
+    .card-subtitle {
+      font-size: 12px;
+      position: relative;
+      top: 52%;
+      width: 100%;
+      color: #fff;
+    }
+  
+    .card1 {
+      
+      width: 50%;
+    }
+
+    .card2 {
+      
+      width: 50%;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-weight: bold;
+    }
+  }
