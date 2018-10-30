@@ -1,0 +1,217 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>TV Show Details</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+<ion-content no-padding>
+
+
+
+  <div class="image">
+    <img class="backdrop" src="https://image.tmdb.org/t/p/w500{{+movie?.backdrop_path}}"/>
+    <div class = "title" padding>
+      <h1>
+        {{movie?.original_name}} ({{movie?.first_air_date | date:'yyyy'}})
+      </h1>
+      <h3>
+        <div class = "title-detail">
+        <ion-badge>{{movie?.status}} |
+          {{movie?.number_of_episodes}} eps</ion-badge> <br/>
+          <ion-badge  *ngFor = "let genre of movie?.genres">{{genre?.name}}</ion-badge>
+        
+        </div>
+      </h3>
+    </div>
+  </div>
+
+  <ion-card class="content" >
+
+    <div class="poster" padding>
+      <img src="https://image.tmdb.org/t/p/w500{{+movie?.poster_path}}"/>
+    </div>
+  
+    <div padding>
+    <h2 >{{movie?.name}}</h2>
+    <h3 >( Created by: <span *ngFor="let created of movie?.created_by">{{created?.name}}, </span>)</h3>
+  </div>
+    <div class="overview">
+    <p>{{movie?.overview}}</p>
+    <a ion-button href="{{movie?.homepage}}" icon-start block padding>
+        <ion-icon name='share-alt'></ion-icon>
+        Go To Homepage
+      </a>
+    <br/>
+   
+  </div>
+  </ion-card>
+
+<ion-card no-padding>
+  <ion-item>
+    <h1>Details</h1>
+    <div>
+      
+      <h3>
+      <ion-icon name="star"></ion-icon> Rating: {{movie?.vote_average}} / 10  <br/>
+    
+      <ion-icon name="people"></ion-icon> Votes: {{movie?.vote_count}} people<br/>
+    </h3>
+    
+    </div>
+  
+      <h3>
+    <ion-icon name="calendar"></ion-icon> First Airing: {{movie?.first_air_date}} <br/> 
+  
+    <span *ngFor = "let country of movie?.origin_country">
+      <ion-icon name="planet"></ion-icon> Country ID: {{country}}  <br/>
+    </span>
+  
+    <span *ngFor = "let company of movie?.production_companies">
+        <ion-icon name="briefcase"></ion-icon> Company : {{company?.name}}<br/>
+      </span>
+    </h3>
+  </ion-item>
+</ion-card>
+ 
+
+<ion-card class="video">
+
+    <ion-item>
+       <h1>Video</h1>
+     </ion-item>
+    
+    <ion-list *ngFor = "let key of video?.results, let i = index">
+       
+      <ion-item *ngIf = "i<3" >
+       <img class="video-thumbnail" src ="https://img.youtube.com/vi/{{key?.key}}/mqdefault.jpg">
+       <div class="card-title">
+         <ion-icon name="play" color="primary">
+        </ion-icon>
+       </div>
+       <a ion-button href="https://www.youtube.com/watch?v={{key?.key}}" icon-start block padding>
+        <ion-icon name='share-alt'></ion-icon>
+        Watch {{key?.name}}
+      </a>
+      </ion-item>
+    
+    </ion-list>
+    </ion-card>
+
+  <div no-padding>
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="Cast">
+        Cast
+      </ion-segment-button>
+      <ion-segment-button value="Crew">
+        Crew
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div class="segment" [ngSwitch]="segment">
+    <ion-list *ngSwitchCase="'Cast'">
+    
+          <div *ngFor= "let cast of credit?.cast, let i = index"> 
+              <ion-item *ngIf = "i<10">
+                
+                  <ion-thumbnail *ngIf = "i<10" item-start class="img-segment">
+                    <img src="https://image.tmdb.org/t/p/w120_and_h133_face{{cast?.profile_path}}"/>
+                  </ion-thumbnail>
+              
+                  <h2 *ngIf = "i<10">{{cast?.name}}</h2>
+                  <h3 *ngIf = "i<10">As : {{cast?.character}}</h3>
+                
+              </ion-item>
+              </div>
+    
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'Crew'">
+
+      <div *ngFor= "let crew of credit?.crew, let i = index"> 
+        <ion-item *ngIf = "i<10">
+          
+            <ion-thumbnail *ngIf = "i<10" item-start class="img-segment">
+              <img src="https://image.tmdb.org/t/p/w120_and_h133_face{{crew?.profile_path}}"/>
+            </ion-thumbnail>
+        
+            <h2 *ngIf = "i<10">Department : {{crew?.department}}</h2>
+            <h3 *ngIf = "i<10">As : {{crew?.job}}</h3>
+            <h3 *ngIf = "i<10">Name : {{crew?.name}}</h3>
+          
+        </ion-item>
+        </div>
+
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list *ngFor= "let image of image?.posters,  let i =index">
+        <img *ngIf="i<2" class="grid" src="https://image.tmdb.org/t/p/original/{{image?.file_path}}" imageViewer/>
+    </ion-list>
+  </div>
+  <br/>
+  <br/>
+
+  <div no-padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="overview">
+        Overview
+      </ion-segment-button>
+      <ion-segment-button value="recommendations">
+        Recommendations
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'recommendations'">
+      <ion-list >
+        <div *ngFor= "let recommend of recommend?.results, let i = index">
+         <ion-item *ngIf="i<5" (click)="onGoToPage(recommend.id)">
+           <img  class="thumbnail" item-start [src] ="'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+recommend?.poster_path">
+           <h2>{{recommend?.name}}</h2>
+           <p>Rating: {{recommend?.vote_average}}</p>
+           <p>Released: {{recommend?.first_air_date}}</p>
+          
+            <p>{{recommend?.overview}} </p>
+          </ion-item>
+        </div>
+      </ion-list>
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'overview'">
+     
+        <ion-list class="movie-overview" *ngFor= "let image of image?.backdrops,  let i =index">
+          <img *ngIf="i<10" class="grid" src="https://image.tmdb.org/t/p/original/{{image?.file_path}}" imageViewer/>
+        </ion-list >
+      
+      
+    </ion-list>
+  </div>
+
+  <ion-item>
+    <h1 >Similar TV Shows</h1>
+    </ion-item>
+    <ion-list >
+      <div *ngFor= "let similar of similar?.results, let i = index">
+       <ion-item *ngIf="i<5" (click)="onGoToPage(similar.id)">
+         <img  class="thumbnail" item-start [src] ="'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+similar?.poster_path">
+         <h2>{{similar?.name}}</h2>
+         <p>Rating: {{similar?.vote_average}}</p>
+         <p>Released: {{similar?.first_air_date}}</p>
+        
+          <p>{{similar?.overview}} </p>
+        </ion-item>
+    </div>
+    </ion-list>
+  
+
+    
+</ion-content>
+

@@ -4,6 +4,9 @@ import { TvPage } from '../tv/tv';
 import { TvairingPage } from '../tvairing/tvairing';
 import { TvonairPage } from '../tvonair/tvonair';
 import { TvpopularPage } from '../tvpopular/tvpopular';
+import { ServiceProvider } from '../../providers/service/service';
+import { NxtvPage } from '../tv/nxtv/nxtv';
+import { SearchtvPage } from '../searchtv/searchtv';
 
 /**
  * Generated class for the HotvPage page.
@@ -19,11 +22,23 @@ import { TvpopularPage } from '../tvpopular/tvpopular';
 })
 export class HotvPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public list: any;
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public service: ServiceProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HotvPage');
+    this.service.getTvList().subscribe(
+    hotv => {
+      this.list = hotv.items;
+      console.log(this.list)
+    },(e)=>{
+      console.log(e)
+    }
+  )
   }
 
 
@@ -40,6 +55,17 @@ export class HotvPage {
   }
   onGoToPagePopular() {
     this.navCtrl.push(TvpopularPage);
+  }
+
+  onGoToPage(id) {
+    console.log(id)
+    this.navCtrl.push(NxtvPage, {id:id});
+
+  }
+
+  onGoToSearch() {
+    console.log()
+    this.navCtrl.push(SearchtvPage);
   }
 
 

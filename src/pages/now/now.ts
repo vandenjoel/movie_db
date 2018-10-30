@@ -4,6 +4,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 
 import {ServiceProvider} from '../../providers/service/service';
 import { NxnowPage } from './nxnow/nxnow';
+import { SearchmoviePage } from '../searchmovie/searchmovie';
 
 @IonicPage()
 @Component({
@@ -12,7 +13,7 @@ import { NxnowPage } from './nxnow/nxnow';
 })
 
 export class NowPage {
-
+                
   private Now:any;
 
   constructor(
@@ -25,7 +26,7 @@ export class NowPage {
 
   ionViewDidLoad(){
     this.service.getNow().subscribe(
-      now => {
+      now => { 
         this.Now = now.results;
         console.log(this.Now)
       },(e)=>{
@@ -39,6 +40,11 @@ export class NowPage {
     console.log(id)
     this.navCtrl.push(NxnowPage, {id:id});
 
+  }
+
+  onGoToSearch() {
+    console.log()
+    this.navCtrl.push(SearchmoviePage);
   }
 
 }

@@ -3,6 +3,8 @@ import { IonicPage, NavController } from 'ionic-angular';
 
 
 import {ServiceProvider} from '../../providers/service/service';
+import { NxtvpopularPage } from './nxtvpopular/nxtvpopular';
+import { SearchtvPage } from '../searchtv/searchtv';
 
 @IonicPage()
 @Component({
@@ -31,5 +33,14 @@ export class TvpopularPage {
     )
   }
 
+  onGoToPage(id) {
+    console.log(id);
+    this.navCtrl.push(NxtvpopularPage, {id:id});
+  }
+
+  onGoToSearch() {
+    console.log()
+    this.navCtrl.push(SearchtvPage);
+  }
 
 }

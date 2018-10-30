@@ -6,6 +6,9 @@ import { HomePage } from '../home/home';
 import { UpcomingPage } from '../upcoming/upcoming';
 import { NowPage } from '../now/now';
 import { PopularPage } from '../popular/popular';
+import { ServiceProvider } from '../../providers/service/service';
+import { NxhomePage } from '../home/nxhome/nxhome';
+import { SearchmoviePage } from '../searchmovie/searchmovie';
 
 
 
@@ -18,12 +21,31 @@ import { PopularPage } from '../popular/popular';
 
 
 export class HomoviePage {
+  public list: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+ 
+  
+
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public service: ServiceProvider) {
+
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomoviePage');
+
+    this.service.getMoList().subscribe(
+      homovie => {
+        this.list = homovie.items;
+        console.log(this.list)
+      },(e)=>{
+        console.log(e)
+      }
+    )
+
+  
+
   }
 
   onGoToPageTop() {
@@ -39,6 +61,17 @@ export class HomoviePage {
   }
   onGoToPagePopular() {
     this.navCtrl.push(PopularPage);
+  }
+
+  onGoToPage(id) {
+    console.log(id)
+    this.navCtrl.push(NxhomePage, {id:id});
+
+  }
+
+  onGoToSearch() {
+    console.log()
+    this.navCtrl.push(SearchmoviePage);
   }
 
 

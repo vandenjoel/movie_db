@@ -1,22 +1,24 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Upcoming Movies</ion-title>
+    <ion-buttons end (click)="onGoToSearch()">
+        <button ion-button class="searchbutton">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content no-padding>
   
-
-
-
   <ion-list >
   <ion-item *ngFor= "let movie of Upcoming" (click)="onGoToPage(movie.id)"> 
-    <ion-thumbnail item-start>
-        <img [src] ="'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+movie.poster_path">
-    </ion-thumbnail>
+    
+        <img class="thumbnail" item-start [src] ="'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+movie.poster_path">
+    
      <h2>{{movie.title}}</h2>
      <p>Rating: {{movie.vote_average}}</p>
      <p>Released: {{movie.release_date}}</p>

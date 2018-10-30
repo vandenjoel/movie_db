@@ -1,3 +1,52 @@
-page-nxpopular {
+page-nxhome {
 
+    .content {
+        padding-right: 10px;
+    }
+}
+
+.poster{
+    width: 35%;
+    height: 35%;
+    float: left;
+    box-sizing: border-box;
+    padding-right: 15px;
+ }
+
+ .overview {
+    text-align: justify;
+    padding-left: 10px;
+      
+ }
+ 
+ .title-detail {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: lighter;
+} 
+
+.grid {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 45%;
+    height: 45%;
+}
+
+.grid:hover {
+    border: 1px solid #777;
+}
+
+.grid img {
+    width: 45%;
+    height: 45%;
+}
+
+.thumbnail {
+    width:15%;
+    height:15%;
+}
+
+.img-segment {
+    width: 15%;
+    height: 15%;
 }

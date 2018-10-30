@@ -3,6 +3,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 
 import {ServiceProvider} from '../../providers/service/service';
 import { NxupcomingPage } from './nxupcoming/nxupcoming';
+import { SearchmoviePage } from '../searchmovie/searchmovie';
 
 
 @IonicPage()
@@ -35,6 +36,11 @@ export class UpcomingPage {
     console.log(id)
     this.navCtrl.push(NxupcomingPage, {id:id});
 
+  }
+
+  onGoToSearch() {
+    console.log()
+    this.navCtrl.push(SearchmoviePage);
   }
 
 

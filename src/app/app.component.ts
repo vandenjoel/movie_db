@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+//import { CacheService } from 'ionic-cache';
 
 import { HomePage } from '../pages/home/home';
 
@@ -16,6 +17,8 @@ import { TvonairPage } from '../pages/tvonair/tvonair';
 import { TvpopularPage } from '../pages/tvpopular/tvpopular';
 
 import { TabsPage } from '../pages/tabs/tabs';
+import { CertificatesPage } from '../pages/certificates/certificates';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -32,8 +35,11 @@ export class MyApp {
   constructor (
     public platform: Platform, 
     public statusBar: StatusBar, 
-    public splashScreen: SplashScreen) {
-    this.initializeApp();
+    public splashScreen: SplashScreen,
+   // public cache: CacheService 
+  )
+    {
+
 
     // used for an example of ngFor and navigation
     this.pages = [
@@ -53,8 +59,9 @@ export class MyApp {
     ];
 
     this.added = [
-      { title: 'Map', component: MapPage},
+     
       { title: 'About', component: AboutPage },
+      { title: 'Certificate', component: CertificatesPage },
      // { title: 'Logout', name: 'TabsPage', component: TabsPage, icon: 'log-out', logsOut: true }
     ];
 
@@ -62,6 +69,10 @@ export class MyApp {
 
   initializeApp() {
     this.platform.ready().then(() => {
+     // this.cache.setDefaultTTL(60*60*12);
+
+    //  this.cache.setOfflineInvalidate(false);
+
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();

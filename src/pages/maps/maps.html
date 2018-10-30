@@ -1,0 +1,28 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Nearby Cinemas</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="showNearbyResto()"><ion-icon name="list"></ion-icon>Restaurants</button>
+      </ion-buttons> 
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <br>
+  <div #map id="map"></div>
+  
+
+<div padding>
+  <button ion-button full icon-left (click)="startTracking">
+      <ion-icon name="locate"></ion-icon>Look Nearby Cinemas
+    </button>
+  </div>
+</ion-content>

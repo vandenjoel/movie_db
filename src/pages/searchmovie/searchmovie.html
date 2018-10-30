@@ -1,0 +1,35 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Search Movie</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar color="primary" round>
+      <ion-searchbar (ionInput)="searchForMovie($event, searchKey)"  ></ion-searchbar> 
+      </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content no-padding>
+
+    <ion-list>	
+        <ion-item *ngFor="let movie of movies" (click)="onGoToPage(movie.id)">
+            <img class="thumbnail" item-start [src] ="'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+movie.poster_path">
+    
+            <h2>{{movie.title}}</h2>
+            <p>Rating: {{movie.vote_average}}</p>
+            <p>Released: {{movie.release_date}}</p>
+           
+             <p>{{movie.overview}} </p>
+           
+              <button ion-button icon-only item-end clear>
+               <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle" color="primary" clear>
+       
+               </ion-icon>
+             </button>
+        </ion-item>
+      </ion-list>	
+
+</ion-content>

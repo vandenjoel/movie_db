@@ -1,11 +1,18 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
       <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
     <ion-title>Movie Features</ion-title>
+
+    <ion-buttons end (click)="onGoToSearch()">
+        <button ion-button class="searchbutton">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
+      
   </ion-navbar>
 
 </ion-header>
@@ -15,8 +22,8 @@
 
   <ion-content class="card-background-page" no-padding >
     <div>
-      <ion-slides pager >
-          <ion-slide>
+      <ion-slides pager loop="true"autoplay="5000" >
+          <ion-slide (click)="onGoToPage">
             <img src="assets/imgs/x.jpg"/>
           </ion-slide>
           <ion-slide>
@@ -28,10 +35,10 @@
         </ion-slides>
       </div>
     
-  <ion-item>
+  
     <ion-item >
     <ion-card item-start class="card1" (click)="onGoToPageTop()">
-      <img src="assets/imgs/1.jpg" />
+      <img src="assets/imgs/1.png" />
       <div class="card-title">Top Movies</div>
     </ion-card>
     
@@ -44,18 +51,42 @@
   
     <ion-item>
     <ion-card item-start class="card1" (click)="onGoToPageNow()">
-      <img src="assets/imgs/3.jpg" />
+      <img src="assets/imgs/3.png" />
       <div class="card-title">Now Playing</div>
     </ion-card>
   
     <ion-card item-start class="card2" (click)="onGoToPagePopular()">
-      <img src="assets/imgs/4.jpg" />
+      <img src="assets/imgs/4.png" />
       <div class="card-title">Popular</div>
     </ion-card>
   
   </ion-item> 
 
+  <ion-card>
+  <ion-list >
+  <div *ngFor= "let movie of list, let i = index">
+    <ion-item  *ngIf = "i<4" (click)="onGoToPage(movie.id)" > 
+     
+    
+      <img class="thumbnail" item-start [src] ="'https://image.tmdb.org/t/p/w185_and_h278_bestv2'+movie.poster_path">
+  
+   <h2>{{movie.title}}</h2>
+   <p>Rating: {{movie.vote_average}}</p>
+   <p>Released: {{movie.release_date}}</p>
+  
+    <p>{{movie.overview}} </p>
+  
+     <button ion-button icon-only item-end clear>
+      <ion-icon ios="ios-arrow-dropright-circle" md="md-arrow-dropright-circle" color="primary" clear>
+
+      </ion-icon>
+    </button>
+ 
 </ion-item>
+</div>
+
+  </ion-list>
+</ion-card>
   </ion-content>
 
 

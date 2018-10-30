@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
+import { YoutubeVideoPlayer } from "@ionic-native/youtube-video-player"
+import { IonicImageViewerModule } from "ionic-img-viewer"
+
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -26,6 +29,18 @@ import { HotvPage } from '../pages/hotv/hotv';
 import { NxupcomingPage } from '../pages/upcoming/nxupcoming/nxupcoming';
 import { NxnowPage } from '../pages/now/nxnow/nxnow';
 import { NxpopularPage } from '../pages/popular/nxpopular/nxpopular';
+import { NxtvPage } from '../pages/tv/nxtv/nxtv';
+import { NxtvairingPage } from '../pages/tvairing/nxtvairing/nxtvairing';
+import { NxtvonairPage } from '../pages/tvonair/nxtvonair/nxtvonair';
+import { NxtvpopularPage } from '../pages/tvpopular/nxtvpopular/nxtvpopular';
+import { YtProvider } from '../providers/yt/yt';
+import { NximagePage } from '../pages/home/nximage/nximage';
+import { SearchmoviePage } from '../pages/searchmovie/searchmovie';
+import { SearchtvPage } from '../pages/searchtv/searchtv';
+import { CertificatesPage } from '../pages/certificates/certificates';
+import { MapsPage } from '../pages/maps/maps';
+import { CacheModule } from 'ionic-cache';
+
 
 
 @NgModule({
@@ -49,11 +64,20 @@ import { NxpopularPage } from '../pages/popular/nxpopular/nxpopular';
     NxupcomingPage,
     NxnowPage,
     NxpopularPage,
+    NxtvPage,
+    NxtvairingPage,
+    NxtvonairPage,
+    NxtvpopularPage,
+    NximagePage,
+    SearchmoviePage,
+    SearchtvPage,
+    CertificatesPage,
+    MapsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule, IonicImageViewerModule, CacheModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -76,13 +100,23 @@ import { NxpopularPage } from '../pages/popular/nxpopular/nxpopular';
     NxupcomingPage,
     NxnowPage,
     NxpopularPage,
+    NxtvPage,
+    NxtvairingPage,
+    NxtvonairPage,
+    NxtvpopularPage,
+    NximagePage,
+    SearchmoviePage,
+    SearchtvPage,
+    CertificatesPage,
+    MapsPage
   
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ServiceProvider,
+    ServiceProvider, YoutubeVideoPlayer, 
+    YtProvider
   
 
   ]
